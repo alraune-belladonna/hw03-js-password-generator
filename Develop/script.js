@@ -42,15 +42,16 @@ inputs.addEventListener('click', () => {
 
 })
 
-if (element.matches('.lowercase')) {
+if (document.getElementById('lowercase').getAttribute('data-state')==='off') {
   console.log('lowercase register')
-  if (state === off) {
-    characterArray = characterArray.filter((el) => !lowercaseArray.includes(el))
-    console.log('off status')
+  characterArray = characterArray.filter((el) => !lowercaseArray.includes(el))
+  console.log('lowercase off')
   }
-  else {
-    console.log('on status')
+
+else if (document.getElementById('lowercase').getAttribute('data-state') === 'on') {
+    console.log('lowercase on')
   }
-}
 // wrapper.getElementById('generate').addEventListener('click', () => {
 // }
+//console.log(lowercaseArray)
+console.log(characterArray)
