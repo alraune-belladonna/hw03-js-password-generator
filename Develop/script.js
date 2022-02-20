@@ -28,17 +28,18 @@ inputs.addEventListener('click', () => {
     if (state === 'off') {
       element.classList.add('active')
       element.setAttribute('data-state', 'on')
-      console.log('toggle on works')
+      //console.log('toggle on works')
     }
     else if (state === 'on') {
       element.classList.remove('active')
       element.setAttribute('data-state', 'off')
-      console.log('toggle off works')
+      //console.log('toggle off works')
     }
   }
 
+  //password attribute toggles
+
   if (document.getElementById('lowercase').getAttribute('data-state') === 'off') {
-    console.log('lowercase register')
     let lowercaseArray = []
     console.log('lowercase off')
   }
@@ -47,7 +48,32 @@ inputs.addEventListener('click', () => {
     console.log('lowercase on')
   }
 
-  //section - password qualities activation
+  if (document.getElementById('uppercase').getAttribute('data-state') === 'off') {
+    let uppercaseArray = []
+    console.log('uppercase off')
+  }
+
+  else if (document.getElementById('uppercase').getAttribute('data-state') === 'on') {
+    console.log('uppercase on')
+  }
+
+  if (document.getElementById('numeric').getAttribute('data-state') === 'off') {
+    let numericArray = []
+    console.log('numeric off')
+  }
+
+  else if (document.getElementById('numeric').getAttribute('data-state') === 'on') {
+    console.log('numeric on')
+  }
+
+  if (document.getElementById('special').getAttribute('data-state') === 'off') {
+    let specialArray = []
+    console.log('special off')
+  }
+
+  else if (document.getElementById('special').getAttribute('data-state') === 'on') {
+    console.log('special on')
+  }
 
 })
 
