@@ -1,5 +1,7 @@
 const inputs = document.querySelector('.qualities')
 
+//arrays
+
 const alphabetList = 'abcdefghijklmnopqrstuvwxyz'
 
 const upperAlphabetList = alphabetList.toUpperCase()
@@ -8,14 +10,17 @@ const numberList = '0123456789'
 
 const specialList = '!#$%&()*+,-./:;<=>?@[]/^_`{|}~'
 
-let lowercaseArray = alphabetList.split('')
+let lowercaseArray = alphabetList.split(' ')
 
-let uppercaseArray = upperAlphabetList.split('')
+let uppercaseArray = upperAlphabetList.split(' ')
 
-let numericArray = numberList.split('')
+let numericArray = numberList.split(' ')
 
-let specialArray = specialList.split('')
+let specialArray = specialList.split(' ')
 
+//number of characters quality
+
+let numberOfCharacters = document.querySelector('numberChar').value
 
 inputs.addEventListener('click', () => {
   const element = event.target
@@ -75,13 +80,15 @@ inputs.addEventListener('click', () => {
     console.log('special on')
   }
 
+  localStorage.setItem('password', password)
+
 })
 
-//final array set connect to/inside generate function
-let characterArray = [lowercaseArray.concat(uppercaseArray, numericArray, specialArray)]
+//final array set connect to inside generate function
+let generatePassword = () => {
+  document.getElementById('generate').addEventListener('click', () => {
+    let characterArray = [lowercaseArray.concat(uppercaseArray, numericArray, specialArray)]
 
-console.log(characterArray)
-
-
-// wrapper.getElementById('generate').addEventListener('click', () => {
-// }
+    document.getElementById('password').placeholder = characterArray
+  })
+}
