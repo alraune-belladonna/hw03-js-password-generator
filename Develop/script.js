@@ -20,7 +20,7 @@ let specialArray = specialList.split(' ')
 
 //number of characters quality
 
-let numberOfCharacters = document.querySelector('numberChar').value
+let numberOfCharacters = document.getElementById('numberChar').value
 
 inputs.addEventListener('click', () => {
   const element = event.target
@@ -80,15 +80,20 @@ inputs.addEventListener('click', () => {
     console.log('special on')
   }
 
-  localStorage.setItem('password', password)
+  let characterArray = [lowercaseArray.concat(uppercaseArray, numericArray, specialArray)]
+
+  localStorage.setItem('arrayData', characterArray)
 
 })
 
 //final array set connect to inside generate function
 let generatePassword = () => {
-  document.getElementById('generate').addEventListener('click', () => {
-    let characterArray = [lowercaseArray.concat(uppercaseArray, numericArray, specialArray)]
 
-    document.getElementById('password').placeholder = characterArray
-  })
+  let password = localStorage.getItem('arrayData')[Math.floor(Math.random() * numberOfCharacters)]
+
+  document.getElementById('password').placeholder = password
 }
+
+document.getElementById('generate').addEventListener('click', () => {
+  generatePassword()
+})
