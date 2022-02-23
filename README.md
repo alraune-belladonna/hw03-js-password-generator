@@ -1,5 +1,11 @@
 # 03 JavaScript: Password Generator
 
+PERSONAL NOTES:
+
+After a long period of trial and error (attempts located and noted below the functional code) on methods to allow the user to pick password qualities (length, upper or lowercase letters, etc.) I mananged to get it to work properly as well as unload the previous password so it wouldn't keep stacking on repeat use.
+
+//PROMPT
+
 Create an application that generates a random password based on user-selected criteria. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
 If you are unfamiliar with special characters, take a look at [some examples](https://www.owasp.org/index.php/Password_special_characters).
