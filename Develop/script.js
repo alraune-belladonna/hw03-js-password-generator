@@ -1,4 +1,4 @@
-const inputs = document.querySelector('.qualities')
+//const inputs = document.querySelector('.qualities')
 
 //arrays
 
@@ -16,8 +16,12 @@ let lowercaseConfirm
 let uppercaseConfirm
 let numericConfirm
 let specialConfirm
+let lengthConfirm
 
-const passwordGenerator = () => {
+let passwordGenerator = () => {
+
+
+  let password = []
 
   let lowercaseConfirm = confirm('Include lowercase letters in password?')
   let uppercaseConfirm = confirm('Include uppercase letters in password?')
@@ -49,89 +53,93 @@ const passwordGenerator = () => {
   }
 
   for (let i = 0; i < lengthValue; i++) {
-    let randomIndex = Math.floor(Math.random() * fullArray.length)
-    let randomCharacter = fullArray[randomIndex]
-    password = password + randomCharacter
-
-    return password
-    return lowercaseConfirm
-    return uppercaseConfirm
-    return numericConfirm
-    return specialConfirm
-
+    let randomCharacter = fullArray[Math.floor(Math.random() * fullArray.length)]
+    password += randomCharacter
   }
 
-}
+  console.log(password)
 
-let protoPassword
-const passwordCheck = () => {
-  protoPassword = passwordGenerator()
-  if (lowercaseConfirm) {
-    console.log('confirming lowercase')
-    let verifyLowercase = false
-    for (let i = 0; i < protoPassword.length; i++) {
-      let possibleLowercase = protoPassword[i]
-      if (possibleLowercase == 'a' ||  possibleLowercase == 'b' ||  possibleLowercase == 'c' ||  possibleLowercase == 'd' ||  possibleLowercase == 'e' ||  possibleLowercase == 'f' ||  possibleLowercase == 'g' ||  possibleLowercase == 'h' ||  possibleLowercase == 'i' ||  possibleLowercase == 'j' ||  possibleLowercase == 'k' ||  possibleLowercase == 'l' ||  possibleLowercase == 'm' ||  possibleLowercase == 'n' ||  possibleLowercase == 'o' ||  possibleLowercase == 'p' ||  possibleLowercase == 'q' ||  possibleLowercase == 'r' ||  possibleLowercase == 's' ||  possibleLowercase == 't' ||  possibleLowercase == 'u' ||  possibleLowercase == 'v' ||  possibleLowercase == 'w' ||  possibleLowercase == 'x' ||  possibleLowercase == 'y' ||  possibleLowercase == 'z') {
-        verifyLowercase = true
-      }
-    }
-    if (verifyLowercase == false) {
-      console.log('no lowercase')
-      passwordCheck()
-    }
-  }
-
-  if (uppercaseConfirm) {
-    let verifyUppercase = false
-    for (let i = 0; i < protoPassword.length; i++) {
-      let possibleUppercase = protoPassword[i]
-      if (possibleUppercase == 'A' || possibleUppercase == 'B' ||  possibleUppercase == 'C' ||  possibleUppercase == 'D' ||  possibleUppercase == 'E' ||  possibleUppercase == 'F' ||  possibleUppercase == 'G' ||  possibleUppercase == 'H' ||  possibleUppercase == 'I' ||  possibleUppercase == 'J' ||  possibleUppercase == 'K' ||  possibleUppercase == 'L' ||  possibleUppercase == 'M' ||  possibleUppercase == 'N' ||  possibleUppercase == 'O' ||  possibleUppercase == 'P' ||  possibleUppercase == 'Q' ||  possibleUppercase == 'R' ||  possibleUppercase == 'S' ||  possibleUppercase == 'T' ||  possibleUppercase == 'U' ||  possibleUppercase == 'V' ||  possibleUppercase == 'W' ||  possibleUppercase == 'X' ||  possibleUppercase == 'Y' ||  possibleUppercase == 'Z') {
-        verifyUppercase = true
-      }
-      if (verifyUppercase == false) {
-        console.log('no uppercase')
-        passwordCheck()
-      }
-    }
-  }
-
-  if (numericConfirm) {
-    let verifyNumeric = false
-    for (let i = 0; i < protoPassword.length; i++) {
-      let possibleNumeric = protoPassword[i]
-      if (possibleNumeric == 0 || possibleNumeric == 1 || possibleNumeric == 2 || possibleNumeric == 3 || possibleNumeric == 4 || possibleNumeric == 5 || possibleNumeric == 6 || possibleNumeric == 7 || possibleNumeric == 8 || possibleNumeric == 9) {
-        verifyNumeric = true
-      }
-    }
-    if (verifyNumeric == false) {
-      console.log('no numeric')
-      passwordCheck()
-    }
-  }
-
-  if (specialConfirm) {
-    let verifySpecial = false
-    for (let i = 0; i < protoPassword.length; i++) {
-      let possibleSpecial = protoPassword[i]
-      if (possibleSpecial == '!' || possibleSpecial == '#' || possibleSpecial == '$' || possibleSpecial == '%' || possibleSpecial == '&' || possibleSpecial == '(' || possibleSpecial == ')' || possibleSpecial == '*' || possibleSpecial == '+' || possibleSpecial == ',' || possibleSpecial == '-' || possibleSpecial == '.' ||  possibleSpecial == '/' ||  possibleSpecial == ':' ||  possibleSpecial == ';' ||  possibleSpecial == '<' ||  possibleSpecial == '=' ||  possibleSpecial == '>' ||  possibleSpecial == '?' || possibleSpecial == '@' || possibleSpecial == '[' || possibleSpecial == ']' || possibleSpecial == '^' || possibleSpecial == '_' || possibleSpecial == '`' || possibleSpecial == '{' || possibleSpecial == '|' || possibleSpecial == '}' || possibleSpecial == '~') {
-        verifySpecial = true
-      }
-    }
-    if (verifySpecial == false) {
-      console.log('no special')
-      passwordCheck()
-    }
-  }
-
-  return protoPassword.value
+  return password
 
 }
 
 document.getElementById('generate').addEventListener('click', () => {
-  let newPassword = passwordCheck()
-  console.log(newPassword)
-  document.getElementById('password').innerHTML = newPassword
+
+  document.getElementById('password').value = passwordGenerator()
+  
 })
+
+// attempted check
+
+// let protoPassword
+// const passwordCheck = () => {
+//   protoPassword = passwordGenerator()
+//   if (lowercaseConfirm) {
+//     console.log('confirming lowercase')
+//     let verifyLowercase = false
+//     for (let i = 0; i < protoPassword.length; i++) {
+//       let possibleLowercase = protoPassword[i]
+//       if (possibleLowercase == 'a' ||  possibleLowercase == 'b' ||  possibleLowercase == 'c' ||  possibleLowercase == 'd' ||  possibleLowercase == 'e' ||  possibleLowercase == 'f' ||  possibleLowercase == 'g' ||  possibleLowercase == 'h' ||  possibleLowercase == 'i' ||  possibleLowercase == 'j' ||  possibleLowercase == 'k' ||  possibleLowercase == 'l' ||  possibleLowercase == 'm' ||  possibleLowercase == 'n' ||  possibleLowercase == 'o' ||  possibleLowercase == 'p' ||  possibleLowercase == 'q' ||  possibleLowercase == 'r' ||  possibleLowercase == 's' ||  possibleLowercase == 't' ||  possibleLowercase == 'u' ||  possibleLowercase == 'v' ||  possibleLowercase == 'w' ||  possibleLowercase == 'x' ||  possibleLowercase == 'y' ||  possibleLowercase == 'z') {
+//         verifyLowercase = true
+//       }
+//     }
+//     if (verifyLowercase == false) {
+//       console.log('no lowercase')
+//       passwordCheck()
+//     }
+//   }
+
+//   if (uppercaseConfirm) {
+//     let verifyUppercase = false
+//     for (let i = 0; i < protoPassword.length; i++) {
+//       let possibleUppercase = protoPassword[i]
+//       if (possibleUppercase == 'A' || possibleUppercase == 'B' ||  possibleUppercase == 'C' ||  possibleUppercase == 'D' ||  possibleUppercase == 'E' ||  possibleUppercase == 'F' ||  possibleUppercase == 'G' ||  possibleUppercase == 'H' ||  possibleUppercase == 'I' ||  possibleUppercase == 'J' ||  possibleUppercase == 'K' ||  possibleUppercase == 'L' ||  possibleUppercase == 'M' ||  possibleUppercase == 'N' ||  possibleUppercase == 'O' ||  possibleUppercase == 'P' ||  possibleUppercase == 'Q' ||  possibleUppercase == 'R' ||  possibleUppercase == 'S' ||  possibleUppercase == 'T' ||  possibleUppercase == 'U' ||  possibleUppercase == 'V' ||  possibleUppercase == 'W' ||  possibleUppercase == 'X' ||  possibleUppercase == 'Y' ||  possibleUppercase == 'Z') {
+//         verifyUppercase = true
+//       }
+//       if (verifyUppercase == false) {
+//         console.log('no uppercase')
+//         passwordCheck()
+//       }
+//     }
+//   }
+
+//   if (numericConfirm) {
+//     let verifyNumeric = false
+//     for (let i = 0; i < protoPassword.length; i++) {
+//       let possibleNumeric = protoPassword[i]
+//       if (possibleNumeric == 0 || possibleNumeric == 1 || possibleNumeric == 2 || possibleNumeric == 3 || possibleNumeric == 4 || possibleNumeric == 5 || possibleNumeric == 6 || possibleNumeric == 7 || possibleNumeric == 8 || possibleNumeric == 9) {
+//         verifyNumeric = true
+//       }
+//     }
+//     if (verifyNumeric == false) {
+//       console.log('no numeric')
+//       passwordCheck()
+//     }
+//   }
+
+//   if (specialConfirm) {
+//     let verifySpecial = false
+//     for (let i = 0; i < protoPassword.length; i++) {
+//       let possibleSpecial = protoPassword[i]
+//       if (possibleSpecial == '!' || possibleSpecial == '#' || possibleSpecial == '$' || possibleSpecial == '%' || possibleSpecial == '&' || possibleSpecial == '(' || possibleSpecial == ')' || possibleSpecial == '*' || possibleSpecial == '+' || possibleSpecial == ',' || possibleSpecial == '-' || possibleSpecial == '.' ||  possibleSpecial == '/' ||  possibleSpecial == ':' ||  possibleSpecial == ';' ||  possibleSpecial == '<' ||  possibleSpecial == '=' ||  possibleSpecial == '>' ||  possibleSpecial == '?' || possibleSpecial == '@' || possibleSpecial == '[' || possibleSpecial == ']' || possibleSpecial == '^' || possibleSpecial == '_' || possibleSpecial == '`' || possibleSpecial == '{' || possibleSpecial == '|' || possibleSpecial == '}' || possibleSpecial == '~') {
+//         verifySpecial = true
+//       }
+//     }
+//     if (verifySpecial == false) {
+//       console.log('no special')
+//       passwordCheck()
+//     }
+//   }
+
+//   return protoPassword.value
+
+// }
+
+// document.getElementById('generate').addEventListener('click', () => {
+//   let newPassword = passwordCheck()
+//   console.log(newPassword)
+//   document.getElementById('password').innerHTML = newPassword
+// })
 
 //discard - attempted nesting for loops to compare each individual value for checks
 
